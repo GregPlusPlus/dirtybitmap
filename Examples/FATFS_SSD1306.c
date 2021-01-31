@@ -1,15 +1,15 @@
 /*
-	This sample code is supposed to draw a picture stored in the "picture.bmp" file on the screen.
-	This example shows how to use the dirtybitmap library with the FATFS and SSD1306 libraries on STM32.
+    This sample code is supposed to draw a picture stored in the "picture.bmp" file on the screen.
+    This example shows how to use the dirtybitmap library with the FATFS and SSD1306 libraries on STM32.
 */
 
 void drawBitmap(void) {
-	// Clear the screen
+    // Clear the screen
     ssd1306_Fill(Black);
     ssd1306_SetCursor(0, 0);
     
-    FIL fil;	// File pointer
-    BMP_t bmp;	// The variable storing the bitmap file
+    FIL fil;    // File pointer
+    BMP_t bmp;  // The variable storing the bitmap file
 
     // Init the structure with 0's
     // This is useful later to test if all fields are valid
@@ -17,7 +17,7 @@ void drawBitmap(void) {
 
     // Opening file
     if(f_open(&fil, "picture.bmp", FA_READ) != FR_OK) {
-    	// If unable to open file, display an error message
+        // If unable to open file, display an error message
         ssd1306_WriteString("Failed to open file !", Font_6x8, White);
         ssd1306_UpdateScreen();
 
@@ -34,7 +34,7 @@ void drawBitmap(void) {
     err = BMP_parseFile(&bmp);
 
     if(err) {
-    	// If an error occured, display an error message
+        // If an error occured, display an error message
         ssd1306_WriteString("INVALID FILE !", Font_6x8, White);
         ssd1306_UpdateScreen();
 
@@ -48,7 +48,7 @@ void drawBitmap(void) {
     f_close(&fil);
 
     if(err) {
-    	// If an error occured, display an error message
+        // If an error occured, display an error message
         ssd1306_WriteString("UNABLE TO READ DATA !", Font_6x8, White);
         ssd1306_UpdateScreen();
 
