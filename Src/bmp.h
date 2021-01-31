@@ -88,7 +88,9 @@ BMP_Err_t BMP_parseFile(BMP_t *bmp);
 BMP_Err_t BMP_check(BMP_t *bmp);
 
 /* This function loads the proper
-    pixel data from the file */
+    pixel data from the file 
+    NOTE : After calling this function,
+        the file is no more needed, so it can be closed.*/
 /*
     Param : Pointer to the BMP_t object
     Ret   : Error code
