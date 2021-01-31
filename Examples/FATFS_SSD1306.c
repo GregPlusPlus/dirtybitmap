@@ -1,6 +1,6 @@
 /*
-	This sample code is supposed to draw the picture stored in the "picture.bmp" on the screen.
-	This example shows how to use the dirtybitmap library the FATFS and SSD1306 library on STM32.
+	This sample code is supposed to draw a picture stored in the "picture.bmp" on the screen.
+	This example shows how to use the dirtybitmap library with the FATFS and SSD1306 libraries on STM32.
 */
 
 void drawBitmap(void) {
