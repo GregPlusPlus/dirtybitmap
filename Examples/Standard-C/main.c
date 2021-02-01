@@ -5,54 +5,54 @@
 
 int main()
 {
-	BMP_t bmp;
+    BMP_t bmp;
 
-	BMP_zeroBMP(&bmp);
+    BMP_zeroBMP(&bmp);
 
-	printf("Opening file\n");
+    printf("Opening file\n");
 
-	FILE *fp;
-	fp = fopen("bitmap.bmp", "rb");
+    FILE *fp;
+    fp = fopen("bitmap.bmp", "rb");
 
-	if(!fp) {
-		printf("Unable to open file\n");
+    if(!fp) {
+        printf("Unable to open file\n");
 
-		return -1;
-	}
+        return -1;
+    }
 
-	BMP_setFile(fp);
+    BMP_setFile(fp);
 
-	BMP_Err_t err;
+    BMP_Err_t err;
 
-	printf("Parsing file\n");
+    printf("Parsing file\n");
 
-	err = BMP_parseFile(&bmp);
+    err = BMP_parseFile(&bmp);
 
-	if(err) {
-		printf("Invalid file ! Err (%u)\n", err);
-	}
+    if(err) {
+        printf("Invalid file ! Err (%u)\n", err);
+    }
 
-	printf("Reading data\n");
+    printf("Reading data\n");
 
-	err = BMP_readData(&bmp);
+    err = BMP_readData(&bmp);
 
-	if(err) {
-		printf("Unable to read data ! Err (%u)\n", err);
-	}
+    if(err) {
+        printf("Unable to read data ! Err (%u)\n", err);
+    }
 
-	printf("Closing file\n");
+    printf("Closing file\n");
 
-	fclose(fp);
+    fclose(fp);
 
-	printf("Drawing picture\n");
+    printf("Drawing picture\n");
 
-	BMP_blit(&bmp, 0, 0);
+    BMP_blit(&bmp, 0, 0);
 
-	printf("\n\nReleasing buffer\n");
+    printf("\n\nReleasing buffer\n");
 
-	BMP_release(&bmp);
+    BMP_release(&bmp);
 
-	printf("\n\n");
+    printf("\n\n");
 
-	return 0;
+    return 0;
 }
