@@ -30,6 +30,8 @@ int main()
 
     if(err) {
         printf("Invalid file ! Err (%u)\n", err);
+
+        return -2
     }
 
     printf("Reading data\n");
@@ -38,6 +40,8 @@ int main()
 
     if(err) {
         printf("Unable to read data ! Err (%u)\n", err);
+
+        return -3;
     }
 
     printf("Closing file\n");
