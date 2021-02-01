@@ -34,40 +34,40 @@ static uint8_t getBit(uint8_t i, uint8_t N);
 
 static FILE *fp = NULL;
 void BMP_setFile(FILE *_fp) {
-	fp = _fp;
+    fp = _fp;
 }
 
 
 size_t readBuff(uint8_t *v, size_t s) {
-	size_t br;
+    size_t br;
 
-	br = fread((char*)v, 1, s, fp);
+    br = fread((char*)v, 1, s, fp);
 
-	return br;
+    return br;
 }
 
 void readNext(uint8_t *v) {
-	readBuff(v, 1);
+    readBuff(v, 1);
 }
 
 void jumpTo(size_t pos) {
-	fseek(fp, pos, SEEK_SET);
+    fseek(fp, pos, SEEK_SET);
 }
 
 void putpixel(uint32_t x, uint32_t y, bool color) {
-	static uint32_t lastLine = 0;
+    static uint32_t lastLine = 0;
 
-	if(lastLine != y) {
-		lastLine = y;
+    if(lastLine != y) {
+        lastLine = y;
 
-		printf("\n");
-	}
+        printf("\n");
+    }
 
-	if(color) {
-		printf("#");
-	} else {
-		printf(".");
-	}
+    if(color) {
+        printf("#");
+    } else {
+        printf(".");
+    }
 }
 
 /* *************************************** */
