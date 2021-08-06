@@ -49,6 +49,13 @@ typedef enum {
     BMP_Err_Data_Read       = -5    // Unable to read data.
 } BMP_Err_t;
 
+/* What color should be rendered transparent */
+typedef enum {
+    BMP_Alpha_Color_Black = 0,      // Black color rendered transparent
+    BMP_Alpha_Color_White = 1,      // White color rendered transparent
+    BMP_Alpha_Color_None = 2        // No color is rendered transparent
+} BMP_Alpha_Color_t;
+
 /* *** Place your custom disk / buffer access functions here *** */
 // Eg. FATFS file access
 // void BMP_setFile(FIL *_fp);
@@ -105,6 +112,14 @@ BMP_Err_t BMP_readData(BMP_t *bmp);
     Ret   : Error code
 */
 BMP_Err_t BMP_blit(BMP_t *bmp, uint32_t _x, uint32_t _y);
+
+/* This function allows the user to choose
+    the transparent color */
+/*
+    Params  : Which color might be transparent
+    Ret     : None
+*/
+void BMP_setAlphaColor(BMP_Alpha_Color_t color);
 
 /* This function frees the pixel buffer */
 /*
